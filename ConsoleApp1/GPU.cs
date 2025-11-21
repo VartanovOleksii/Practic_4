@@ -243,4 +243,30 @@ public class Gpu
 
         return new Gpu(part[0], Enum.Parse<GPUArchitecture>(part[1]), decimal.Parse(part[2]));
     }
+
+    public static bool TryParse(string s, out Gpu gpu)
+    {
+        gpu = null;
+        bool valid = false;
+
+        try
+        {
+            gpu = Parse(s);
+            valid = true;
+        }
+        catch (ArgumentNullException ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        catch (FormatException ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"TryParse: {ex.Message}"); 
+        }
+
+        return valid;
+    }
 }
