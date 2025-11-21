@@ -223,4 +223,11 @@ public class Gpu
         MemoryBusWidth = memoryBusWidth;
         LaunchPrice = launchPrice;
     }
+
+
+    //Parse та TryParce
+    public override string ToString()
+    {
+        return $"{ModelName},{Architecture},{LaunchPrice}";
+    }
 }
