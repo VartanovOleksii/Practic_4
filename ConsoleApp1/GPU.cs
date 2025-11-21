@@ -230,4 +230,17 @@ public class Gpu
     {
         return $"{ModelName},{Architecture},{LaunchPrice}";
     }
+
+    public static Gpu Parse (string s)
+    {
+        if (string.IsNullOrEmpty(s))
+            throw new ArgumentNullException(null, "Строка не може бути нулем або пустою.");
+
+        string[] part = s.Split (',');
+
+        if (part.Length != 3)
+            throw new FormatException("Строка неправильного формату");
+
+        return new Gpu(part[0], Enum.Parse<GPUArchitecture>(part[1]), decimal.Parse(part[2]));
+    }
 }
