@@ -151,7 +151,7 @@ while (true)
 
         //Переглянути додані об'єкти
         case "2":
-            if (gpus.Count == 0)
+            if (Gpu.Counter == 0)
             {
                 Console.WriteLine("Список порожній.");
             }
@@ -233,86 +233,80 @@ while (true)
 
         //Демонстрація поведінки
         case "4":
-            if (gpus.Count == 0)
+            if (Gpu.Counter == 0)
             {
                 Console.WriteLine("Додайте об'єкти для демонстрації поведінки");
             }
-            else
+            while (true)
             {
-                while (true)
+                Console.WriteLine("\n==== МЕНЮ ====");
+                Console.WriteLine("1 - Переглянути характеристики");
+                Console.WriteLine("2 - Кількість років з релізу");
+                Console.WriteLine("3 - Кількість років від релізу до заданої дати");
+                Console.WriteLine("4 - Додати до кошику");
+                Console.WriteLine("5 - Видалити з кошику");
+                Console.WriteLine("0 - Назад");
+                Console.Write("Ваш вибір -> ");
+
+                string subchoice = Console.ReadLine();
+                Console.WriteLine();
+
+                switch (subchoice)
                 {
-                    Console.WriteLine("\n==== МЕНЮ ====");
-                    Console.WriteLine("1 - Переглянути характеристики");
-                    Console.WriteLine("2 - Кількість років з релізу");
-                    Console.WriteLine("3 - Кількість років від релізу до заданої дати");
-                    Console.WriteLine("4 - Додати до кошику");
-                    Console.WriteLine("5 - Видалити з кошику");
-                    Console.WriteLine("0 - Назад");
-                    Console.Write("Ваш вибір -> ");
+                    case "1":
+                        gpus[0].PrintInfo();
+                        break;
 
-                    string subchoice = Console.ReadLine();
-                    Console.WriteLine();
+                    case "2":
+                        Console.WriteLine($"Пройшло {gpus[0].YearsSinceRelease()} років");
+                        break;
 
-                    switch (subchoice)
-                    {
-                        case "1":
-                            gpus[0].PrintInfo();
-                            break;
+                    case "3":
+                        Console.Write("Введіть дату: ");
+                        var selectedDate = new DateTime();
 
-                        case "2":
-                            Console.WriteLine($"Пройшло {gpus[0].YearsSinceRelease()} років");
-                            break;
-
-                        case "3":
-                            Console.Write("Введіть дату: ");
-                            var selectedDate = new DateTime();
-
-                            try
+                        try
+                        {
+                            if (DateTime.TryParse(Console.ReadLine(), out selectedDate))
                             {
-                                if (DateTime.TryParse(Console.ReadLine(), out selectedDate))
-                                {
-                                    Console.WriteLine($"Пройшло {gpus[0].YearsSinceRelease(selectedDate)} років");
-                                }
-                                else
-                                {
-                                    throw new ArgumentException("Дата не коректна!");
-                                }
+                                Console.WriteLine($"Пройшло {gpus[0].YearsSinceRelease(selectedDate)} років");
                             }
-                            catch (ArgumentException)
+                            else
                             {
-                                Console.WriteLine("Дата не коректна!");
+                                throw new ArgumentException("Дата не коректна!");
                             }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine(ex.Message);
-                            }
+                        }
+                        catch (ArgumentException)
+                        {
+                            Console.WriteLine("Дата не коректна!");
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                        break;
 
+                    case "4":
+                        gpus[0].AddToBasket();
+                        break;
 
-                            break;
+                    case "5":
+                        gpus[0].DeleteFromBasket();
+                        break;
 
-                        case "4":
-                            gpus[0].AddToBasket();
-                            break;
+                    case "0":
+                        goto start_of_loop;
+                        break;
 
-                        case "5":
-                            gpus[0].DeleteFromBasket();
-                            break;
-
-                        case "0":
-                            goto start_of_loop;
-                            break;
-
-                        default:
-                            Console.WriteLine("Неправильний вибір, спробуйте знову.");
-                            break;
-                    }
+                    default:
+                        Console.WriteLine("Неправильний вибір, спробуйте знову.");
+                        break;
                 }
             }
-            break;
 
         //Видалити об'єкт
         case "5":
-            if (gpus.Count == 0)
+            if (Gpu.Counter == 0)
             {
                 Console.WriteLine("Список порожній.");
                 break;
@@ -366,8 +360,47 @@ while (true)
 
         //Демонстрація static-методів
         case "6":
-            //todo
-            return;
+            if (Gpu.Counter == 0)
+            {
+                Console.WriteLine("Додайте об'єкти для демонстрації поведінки");
+                break;
+            }
+            while(true)
+            {
+                Console.WriteLine("\n==== МЕНЮ ====");
+                Console.WriteLine("1 - Ціна після уцінки");
+                Console.WriteLine("2 - Метод ToString");
+                Console.WriteLine("3 - Метод Parse");
+                Console.WriteLine("4 - Метод TryParse");
+                Console.WriteLine("0 - Назад");
+                Console.Write("Ваш вибір -> ");
+
+                string staticchoice = Console.ReadLine();
+                Console.WriteLine();
+
+                switch (staticchoice)
+                {
+                    case "1":
+                        //todo
+                        break;
+
+                    case "2":
+                        //todo
+                        break;
+
+                    case "3":
+                        //todo
+                        break;
+
+                    case "4":
+                        //todo
+                        break;
+
+                    case "0":
+                        goto start_of_loop;
+                }
+            }
+            
 
         //Вихід
         case "0":
