@@ -123,11 +123,11 @@ public class Gpu
         get { return _discount; }
         set
         {
-            if (value > 0 && value < 1)
+            if (value < 0 || value > 1)
             {
-                _discount = value;
+                throw new ArgumentException("Знижка повинна бути в діапазоні від 0 до 100%");
             }
-            else _discount = 0;
+            _discount = value;
         }
     }
 

@@ -381,7 +381,23 @@ while (true)
                 switch (staticchoice)
                 {
                     case "1":
-                        //todo
+                        Console.Write("Введіть знижку уцінки (у відсотках від 0 до 100): ");
+                        decimal discount;
+
+                        try
+                        {
+                            if (decimal.TryParse(Console.ReadLine(), out discount))
+                                Gpu.Discount = discount*0.01m;
+
+
+                            decimal result = Gpu.PriceWithDiscount(gpus[0].LaunchPrice);
+
+                            Console.WriteLine($"Ціна відеокарти з уцінкою: {result}");
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Помилка: {ex.Message}");
+                        }
                         break;
 
                     case "2":
