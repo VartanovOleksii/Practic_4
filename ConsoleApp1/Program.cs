@@ -28,6 +28,7 @@ while (true)
     Console.WriteLine("3 - Знайти об'єкт");
     Console.WriteLine("4 - Демонстрація поведінки");
     Console.WriteLine("5 - Видалити об'єкт");
+    Console.WriteLine("6 - Демонстрація static-методів");
     Console.WriteLine("0 - Вихід");
     Console.Write("Ваш вибір -> ");
 
@@ -362,6 +363,11 @@ while (true)
                         break;
                 }
             }
+
+        //Демонстрація static-методів
+        case "6":
+            //todo
+            return;
 
         //Вихід
         case "0":
