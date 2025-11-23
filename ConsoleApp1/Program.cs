@@ -1,10 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.JavaScript;
-
-System.Console.OutputEncoding = System.Text.Encoding.Unicode;
+﻿System.Console.OutputEncoding = System.Text.Encoding.Unicode;
 
 int maxCount = 0;
 while (true)
@@ -365,13 +359,12 @@ while (true)
                 Console.WriteLine("Додайте об'єкти для демонстрації поведінки");
                 break;
             }
-            while(true)
+            while (true)
             {
                 Console.WriteLine("\n==== МЕНЮ ====");
                 Console.WriteLine("1 - Ціна після уцінки");
                 Console.WriteLine("2 - Метод ToString");
-                Console.WriteLine("3 - Метод Parse");
-                Console.WriteLine("4 - Метод TryParse");
+                Console.WriteLine("3 - Метод TryParse");
                 Console.WriteLine("0 - Назад");
                 Console.Write("Ваш вибір -> ");
 
@@ -387,7 +380,7 @@ while (true)
                         try
                         {
                             if (decimal.TryParse(Console.ReadLine(), out discount))
-                                Gpu.Discount = discount*0.01m;
+                                Gpu.Discount = discount * 0.01m;
 
 
                             decimal result = Gpu.PriceWithDiscount(gpus[0].LaunchPrice);
@@ -401,22 +394,20 @@ while (true)
                         break;
 
                     case "2":
-                        //todo
+                        Console.WriteLine("Результат роботи gpus[0].ToString()");
+                        Console.WriteLine(gpus[0].ToString());
                         break;
 
                     case "3":
                         //todo
                         break;
 
-                    case "4":
-                        //todo
-                        break;
 
                     case "0":
                         goto start_of_loop;
                 }
             }
-            
+
 
         //Вихід
         case "0":
