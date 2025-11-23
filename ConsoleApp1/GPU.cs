@@ -213,8 +213,6 @@ public class Gpu
     {
         Console.WriteLine("Використовується конструктор зі всіма параметрами.");
 
-        _counter++;
-
         ModelName = modelName;
         GpuClock = gpuClock;
         Architecture = architecture;
@@ -222,6 +220,8 @@ public class Gpu
         ReleaseDate = releaseDate;
         MemoryBusWidth = memoryBusWidth;
         LaunchPrice = launchPrice;
+
+        _counter++;
     }
 
 
