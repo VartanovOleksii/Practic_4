@@ -399,7 +399,14 @@ while (true)
                         break;
 
                     case "3":
-                        //todo
+                        Console.WriteLine("Введіть інформацію про відеокарту в форматі \"Назва;Архітектура;Ціна\":");
+                        string gpu = Console.ReadLine();
+                        Gpu testcase = null;
+
+                        if (Gpu.TryParse(gpu, out testcase))
+                        {
+                            Console.WriteLine($"Результат: {testcase.ToString()}");
+                        }
                         break;
 
 
