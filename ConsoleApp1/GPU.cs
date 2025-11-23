@@ -228,7 +228,7 @@ public class Gpu
     //Parse та TryParce
     public override string ToString()
     {
-        return $"{ModelName},{Architecture},{LaunchPrice}";
+        return $"{ModelName};{Architecture};{LaunchPrice}";
     }
 
     public static Gpu Parse (string s)
@@ -236,7 +236,7 @@ public class Gpu
         if (string.IsNullOrEmpty(s))
             throw new ArgumentNullException(null, "Строка не може бути нулем або пустою.");
 
-        string[] part = s.Split (',');
+        string[] part = s.Split (';');
 
         if (part.Length != 3)
             throw new FormatException("Строка неправильного формату");
