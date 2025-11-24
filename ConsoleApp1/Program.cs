@@ -422,7 +422,9 @@ while (true)
 
                         if (Gpu.TryParse(gpu, out testcase))
                         {
-                            Console.WriteLine($"Результат: {testcase.ToString()}");
+                            Console.WriteLine("Результат:");
+                            testcase.PrintInfo();
+                            maxCount++;
                         }
                         break;
 
@@ -436,7 +438,6 @@ while (true)
                         break;
                 }
             }
-
 
         //Вихід
         case "0":
