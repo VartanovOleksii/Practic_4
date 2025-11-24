@@ -166,10 +166,12 @@ while (true)
         case "2":
             if (Gpu.Counter == 0)
             {
+                Console.WriteLine($"Лічильник {Gpu.Counter}\n");
                 Console.WriteLine("Список порожній.");
             }
             else
             {
+                Console.WriteLine($"Лічильник {Gpu.Counter}\n");
                 Console.WriteLine("Список відеокарт:");
                 foreach (var card in gpus)
                 {
