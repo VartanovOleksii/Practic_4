@@ -64,7 +64,7 @@ public class Gpu
         {
             if (!Enum.IsDefined(typeof(GPUArchitecture), value))
             {
-                throw new ArgumentException("Архітектура не коректна!");
+                throw new ArgumentException("Архітектура не коректна.");
             }
             _architecture = value;
         }
@@ -125,7 +125,7 @@ public class Gpu
         {
             if (value < 0 || value > 1)
             {
-                throw new ArgumentException("Знижка повинна бути в діапазоні від 0 до 100%");
+                throw new ArgumentException("Знижка повинна бути в діапазоні від 0 до 100%.");
             }
             _discount = value;
         }
@@ -161,11 +161,11 @@ public class Gpu
         if (!InBasket)
         {
             InBasket = true;
-            Console.WriteLine("Відеокарта додана в кошик");
+            Console.WriteLine("Відеокарта додана в кошик.");
         }
         else
         {
-            Console.WriteLine("Відеокарта вже знаходиться в кошику");
+            Console.WriteLine("Відеокарта вже знаходиться в кошику.");
         }
     }
 
@@ -174,11 +174,11 @@ public class Gpu
         if (InBasket)
         {
             InBasket = false;
-            Console.WriteLine("Відеокарта видалена з кошика");
+            Console.WriteLine("Відеокарта видалена з кошика.");
         }
         else
         {
-            Console.WriteLine("Відеокарти не було в кошику");
+            Console.WriteLine("Відеокарти не було в кошику.");
         }
     }
 
@@ -193,7 +193,7 @@ public class Gpu
     //Статичний конструктор
     static Gpu()
     {
-        Console.WriteLine("Використовується статичний конструктор");
+        Console.WriteLine("Використовується статичний конструктор.");
         Discount = 0.15m;
     }
 
@@ -239,9 +239,18 @@ public class Gpu
         string[] part = s.Split (';');
 
         if (part.Length != 3)
-            throw new FormatException("Строка неправильного формату");
+            throw new FormatException("Строка неправильного формату.");
 
-        return new Gpu(part[0], Enum.Parse<GPUArchitecture>(part[1]), decimal.Parse(part[2]));
+        GPUArchitecture arch;
+        decimal price;
+
+        if (!Enum.TryParse<GPUArchitecture>(part[1], true, out arch))
+            throw new FormatException("Архітектура не коректна.");
+
+        if (!decimal.TryParse(part[2], out price))
+            throw new FormatException("Значення ціни не коректне.");
+
+        return new Gpu(part[0], arch, price);
     }
 
     public static bool TryParse(string s, out Gpu gpu)
