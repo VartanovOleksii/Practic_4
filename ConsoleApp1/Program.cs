@@ -52,6 +52,7 @@ while (true)
 
                 switch (selectchoice)
                 {
+                    //Задано користувачем
                     case "1":
                         try
                         {
@@ -65,6 +66,7 @@ while (true)
                         }
                         break;
 
+                    //Тест конструкторів
                     case "2":
                         Random seed = new Random();
                         int constructor = seed.Next(3);
@@ -177,12 +179,15 @@ while (true)
 
                 switch (findchoice)
                 {
+                    //Пошук за назвою
                     case "1":
                         Console.Write("Введіть назву моделі: ");
                         string searchName = Console.ReadLine();
                         findresults = gpus.FindAll(vc => vc.ModelName.Contains(searchName, StringComparison.OrdinalIgnoreCase));
                         break;
 
+
+                    //Пошук за архітектурою
                     case "2":
                         Console.WriteLine("Доступні архітектури:");
                         foreach (var arch in Enum.GetValues(typeof(GPUArchitecture)))
@@ -201,6 +206,7 @@ while (true)
                         }
                         break;
 
+                    //Назад
                     case "0":
                         goto start_of_loop;
 
@@ -247,14 +253,17 @@ while (true)
 
                 switch (subchoice)
                 {
+                    //Переглянути характеристики
                     case "1":
                         gpus[0].PrintInfo();
                         break;
 
+                    //Кількість років з релізу
                     case "2":
                         Console.WriteLine($"Пройшло {gpus[0].YearsSinceRelease()} років");
                         break;
 
+                    //Кількість років від релізу до заданої дати
                     case "3":
                         Console.Write("Введіть дату: ");
                         var selectedDate = new DateTime();
@@ -280,17 +289,19 @@ while (true)
                         }
                         break;
 
+                    //Додати до кошику
                     case "4":
                         gpus[0].AddToBasket();
                         break;
 
+                    //Видалити з кошику
                     case "5":
                         gpus[0].DeleteFromBasket();
                         break;
 
+                    //Назад
                     case "0":
                         goto start_of_loop;
-                        break;
 
                     default:
                         Console.WriteLine("Неправильний вибір, спробуйте знову.");
@@ -318,6 +329,7 @@ while (true)
 
                 switch (deletechoice)
                 {
+                    //Видалення за номером
                     case "1":
                         int index;
 
@@ -335,6 +347,7 @@ while (true)
                         Console.WriteLine("Об'єкт видалено.");
                         break;
 
+                    //Видалення за назвою
                     case "2":
                         Console.Write("Введіть назву моделі для видалення:");
                         string deleteName = Console.ReadLine();
@@ -343,6 +356,7 @@ while (true)
                         Console.WriteLine(removed > 0 ? "Об'єкт видалено." : "Об'єкт не знайдено.");
                         break;
 
+                    //Назад
                     case "0":
                         goto start_of_loop;
 
@@ -373,6 +387,7 @@ while (true)
 
                 switch (staticchoice)
                 {
+                    //Ціна після уцінки
                     case "1":
                         Console.Write("Введіть знижку уцінки (у відсотках від 0 до 100): ");
                         decimal discount;
@@ -393,11 +408,13 @@ while (true)
                         }
                         break;
 
+                    //Метод ToString
                     case "2":
                         Console.WriteLine("Результат роботи gpus[0].ToString()");
                         Console.WriteLine(gpus[0].ToString());
                         break;
 
+                    //Метод TryParse
                     case "3":
                         Console.WriteLine("Введіть інформацію про відеокарту в форматі \"Назва;Архітектура;Ціна\":");
                         string gpu = Console.ReadLine();
@@ -410,8 +427,13 @@ while (true)
                         break;
 
 
+                    //Назад
                     case "0":
                         goto start_of_loop;
+
+                    default:
+                        Console.WriteLine("Неправильний вибір, спробуйте знову.");
+                        break;
                 }
             }
 
