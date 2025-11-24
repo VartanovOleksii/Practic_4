@@ -44,6 +44,7 @@ while (true)
                 Console.WriteLine("\n==== МЕНЮ ====");
                 Console.WriteLine("1 - Задано користувачем");
                 Console.WriteLine("2 - Тест конструкторів");
+                Console.WriteLine("3 - Створення через рядок");
                 Console.WriteLine("0 - Назад");
                 Console.Write("Ваш вибір -> ");
 
@@ -133,9 +134,25 @@ while (true)
 
                         break;
 
+                    //Створення через рядок
+                    case "3":
+                        Console.WriteLine("Введіть інформацію про відеокарту в форматі \"Назва;Архітектура;Ціна\":");
+                        string gpu = Console.ReadLine();
+                        card = null;
+
+                        if (Gpu.TryParse(gpu, out card))
+                        {
+                            gpus.Add(card);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Об'єкт не було додано.");
+                        }
+                        break;
+
+                    //Назад
                     case "0":
                         goto start_of_loop;
-                        break;
 
                     default:
                         Console.WriteLine("Неправильний вибір, спробуйте знову.");
